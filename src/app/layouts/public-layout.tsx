@@ -6,7 +6,10 @@ export function PublicLayout() {
     <div className="min-h-screen bg-slate-50 text-slate-900">
       <header className="border-b bg-white/80 backdrop-blur">
         <div className="mx-auto flex h-16 max-w-7xl items-center justify-between px-4">
-          <Link to="/" className="text-lg font-semibold tracking-tight text-green-700">
+          <Link
+            to="/"
+            className="text-lg font-semibold tracking-tight text-green-700"
+          >
             AgriSphere
           </Link>
 
@@ -14,7 +17,7 @@ export function PublicLayout() {
             <Link to="/dashboard">
               <Button variant="outline">Dashboard</Button>
             </Link>
-            <Link to="/login">
+            <Link to="/auth/login">
               <Button>Login</Button>
             </Link>
           </nav>

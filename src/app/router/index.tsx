@@ -1,7 +1,11 @@
-import { createBrowserRouter } from "react-router-dom";
+import { createBrowserRouter, Navigate } from "react-router-dom";
 import { PublicLayout } from "@/app/layouts/public-layout";
 import { DashboardLayout } from "@/app/layouts/dashboard-layout";
+import { AuthLayout } from "@/app/layouts/auth-layout";
 import { LandingPage } from "@/features/landing/pages/landing-page";
+import { LoginPage } from "@/features/auth/pages/login-page";
+import { RegisterPage } from "@/features/auth/pages/register-page";
+import { ForgotPasswordPage } from "@/features/auth/pages/forgot-password-page";
 
 export const router = createBrowserRouter([
   {
@@ -12,6 +16,15 @@ export const router = createBrowserRouter([
         index: true,
         element: <LandingPage />,
       },
+    ],
+  },
+  {
+    path: "/auth",
+    element: <AuthLayout />,
+    children: [
+      { path: "login", element: <LoginPage /> },
+      { path: "register", element: <RegisterPage /> },
+      { path: "forgot-password", element: <ForgotPasswordPage /> },
     ],
   },
   {
@@ -30,5 +43,9 @@ export const router = createBrowserRouter([
         ),
       },
     ],
+  },
+  {
+    path: "*",
+    element: <Navigate to="/" replace />,
   },
 ]);
