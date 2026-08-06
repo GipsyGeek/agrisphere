@@ -6,6 +6,7 @@ import { LandingPage } from "@/features/landing/pages/landing-page";
 import { LoginPage } from "@/features/auth/pages/login-page";
 import { RegisterPage } from "@/features/auth/pages/register-page";
 import { ForgotPasswordPage } from "@/features/auth/pages/forgot-password-page";
+import { RequireAuth } from "@/app/routes/require-auth";
 
 export const router = createBrowserRouter([
   {
@@ -28,19 +29,24 @@ export const router = createBrowserRouter([
     ],
   },
   {
-    path: "/dashboard",
-    element: <DashboardLayout />,
+    element: <RequireAuth />,
     children: [
       {
-        index: true,
-        element: (
-          <div className="rounded-2xl border bg-white p-6">
-            <h2 className="text-2xl font-semibold">Dashboard</h2>
-            <p className="mt-2 text-slate-600">
-              This is the dashboard shell. We’ll build the real modules here next.
-            </p>
-          </div>
-        ),
+        path: "/dashboard",
+        element: <DashboardLayout />,
+        children: [
+          {
+            index: true,
+            element: (
+              <div className="rounded-2xl border bg-white p-6">
+                <h2 className="text-2xl font-semibold">Dashboard</h2>
+                <p className="mt-2 text-slate-600">
+                  This is the dashboard shell. We’ll build the real modules here next.
+                </p>
+              </div>
+            ),
+          },
+        ],
       },
     ],
   },
